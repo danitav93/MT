@@ -1,6 +1,7 @@
 package com.exemple.danieletavernelli.mt.service.interfaccia;
 
 import com.exemple.danieletavernelli.mt.model.Utente;
+import com.exemple.danieletavernelli.mt.response.LoginResponse;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface UtenteService {
 
-     Utente authenticate(String username, String password);
+     LoginResponse authenticate(String username, String password);
 
      Utente getUtenteById(int id);
 

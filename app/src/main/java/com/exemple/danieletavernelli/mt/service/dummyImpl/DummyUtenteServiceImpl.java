@@ -1,10 +1,14 @@
 package com.exemple.danieletavernelli.mt.service.dummyImpl;
 
 import com.exemple.danieletavernelli.mt.model.Utente;
+import com.exemple.danieletavernelli.mt.response.LoginResponse;
 import com.exemple.danieletavernelli.mt.service.interfaccia.UtenteService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.exemple.danieletavernelli.mt.constant.Constants.CODE_GENERIC_ERROR;
+import static com.exemple.danieletavernelli.mt.constant.Constants.CODE_OK;
 
 /**
  * Created by Daniele Tavernelli on 6/21/2018.
@@ -13,8 +17,23 @@ import java.util.List;
 public class DummyUtenteServiceImpl implements UtenteService {
 
     @Override
-    public Utente authenticate(String username, String password) {
-        return generateDummyModel();
+    public LoginResponse authenticate(String username, String password) {
+
+        LoginResponse loginResponse = new LoginResponse();
+
+
+        if (username.equals("testUsername")&& password.equals("testPassword")) {
+
+            loginResponse.setUtente(generateDummyModel());
+            loginResponse.setCode(CODE_OK);
+        } else {
+            loginResponse.setCode(CODE_GENERIC_ERROR);
+            loginResponse.setErrore("Credenziali errate");
+        }
+
+        return loginResponse;
+
+
     }
 
     @Override
@@ -40,7 +59,9 @@ public class DummyUtenteServiceImpl implements UtenteService {
     }
 
     private Utente generateDummyModel() {
-        return new Utente();
+        Utente utente= new Utente();
+        utente.setUsername("userTest");
+        return utente;
     }
 
 }
