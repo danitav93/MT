@@ -22,7 +22,7 @@ public class DummyUtenteServiceImpl implements UtenteService {
         LoginResponse loginResponse = new LoginResponse();
 
 
-        if (username.equals("testUsername")&& password.equals("testPassword")) {
+        if (username.equals("")&& password.equals("")) {
 
             loginResponse.setUtente(generateDummyModel());
             loginResponse.setCode(CODE_OK);
